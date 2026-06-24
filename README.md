@@ -1,4 +1,4 @@
-# Landmark-Based Dynamic Prediction of Mean Residual Lifetime (MRL)
+# Landmark-Based Dynamic Prediction of Mean Residual Life (MRL)
 
 Dynamic prediction of **mean residual lifetime (MRL)** using a landmark supermodel framework, comparing **pseudo-observation (PO)** and **inverse probability of censoring weighting (IPCW)** approaches. The method is illustrated on the `pbc2` primary biliary cirrhosis dataset.
 
