@@ -35,14 +35,14 @@ Both approaches are wrapped in a landmark supermodel that allows covariate effec
 
 Key settings you may want to adjust near the top of the script:
 
-| Setting | Meaning | Default |
-|---|---|---|
-| `tau` | Restriction horizon for residual lifetime | `12` |
-| `sL` | Maximum landmark (prediction) time considered | `7` |
-| `LMs` | Grid of landmark times | `seq(0, sL, by = 0.2)` |
-| `fixed` | Baseline (time-fixed) covariates | `drug`, `sex`, `age` |
-| `varying` | Time-varying covariates | `serBilir`, `edema`, `albumin`, `prothrombin`, `histologic` |
-| `u` | Number of Monte-Carlo validation replicates | `20` |
+| Setting | Meaning |
+|---|---|
+| `tau` | Restriction horizon for residual lifetime |
+| `sL` | Maximum landmark (prediction) time considered |
+| `LMs` | Grid of landmark times |
+| `fixed` | Baseline (time-fixed) covariates |
+| `varying` | Time-varying covariates |
+| `u` | Number of Monte-Carlo validation replicates |
 
 ## Outputs
 
