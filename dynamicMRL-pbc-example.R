@@ -382,8 +382,11 @@ MRL_cindex <- function(model, data) {
 
 MRL_PE <- function(model, data, Y) {
   pre_MRL <- predict(model, data)
-  numerator   <- sum(data$ipcw * abs(Y - pre_MRL))
-  denominator <- sum(data$ipcw)
+  obs <- data$delta_star == 1
+  w   <- data$ipcw[obs]
+  err <- abs(Y[obs] - pre_MRL[obs])
+  numerator   <- sum(w * err)
+  denominator <- sum(w)
   return(numerator / denominator)
 }
 
