@@ -32,7 +32,7 @@ data$sex        <- as.numeric(pbc2$sex   == "female")
 data$edema      <- as.numeric(pbc2$edema != "No edema")
 
 # Truncation time
-tau <- 12
+tau <- 13
 
 data$Y         <- pmin(data$time, tau)
 data$delta_L   <- ifelse(tau <= data$time, 1, 0)
@@ -42,7 +42,7 @@ data$delta_star <- data$delta + data$delta_L * (1 - data$delta)
 # Landmark settings
 # ────────────────────────────────────────────────────────────────
 sL  <- 6                # maximum follow-up time considered
-LMs <- seq(0, sL, by = 0.2)
+LMs <- seq(0, sL, by = 0.5)
 nsl <- length(LMs)
 
 fixed   <- c("drug", "sex", "age")
@@ -293,7 +293,7 @@ sta_pred <- function(patientid) {
 # Dynamic prediction for a single patient
 # ────────────────────────────────────────────────────────────────
 dyn_pred <- function(patientid) {
-  tt <- seq(0, sL, by = 0.2)
+  tt <- seq(0, sL, by = 0.5)
   data_pre <- LMdata[LMdata$id == patientid, ]
   inter <- findInterval(tt, data_pre$year)
   
@@ -518,7 +518,7 @@ legend("bottomleft", c("Dynamic IPCW", "Dynamic PO", "Static IPCW", "Static PO")
 
 # Prediction error plot
 plot(CI[,1], CI[,4], lwd = 2, lty = 3, col = "#54acce", type = "l", bty = "l",
-     xlim = c(0, sL), ylim = c(0, 3), xaxt = "n", yaxt = "n", xlab = "", ylab = "")
+     xlim = c(0, sL), ylim = c(0, 4), xaxt = "n", yaxt = "n", xlab = "", ylab = "")
 axis(1, las = 1, pos = 0, cex.axis = 0.8, tcl = -0.2, padj = -2, lwd = 1)
 axis(2, las = 1, pos = 0, cex.axis = 0.8, tcl = -0.2, hadj = 0.3, lwd = 1)
 title(xlab = "Prediction time (s)", cex.lab = 0.8, line = 0.7)
