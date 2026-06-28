@@ -215,15 +215,15 @@ plot_coef <- function(x, start, ylimit, mintitle, pl = TRUE,
   
   LMsmooth <- data.frame(
     LMs   = LMs,
-    dRMST = as.numeric(bet %*% dyn_po$geese$beta[start:stop])
+    dMRL = as.numeric(bet %*% dyn_po$geese$beta[start:stop])
   )
   
   se <- sqrt(diag(bet %*% dyn_po$geese$vbeta[start:stop, start:stop] %*% t(bet)))
-  LMsmooth$lower <- LMsmooth$dRMST - qnorm(0.975) * se
-  LMsmooth$upper <- LMsmooth$dRMST + qnorm(0.975) * se
+  LMsmooth$lower <- LMsmooth$dMRL - qnorm(0.975) * se
+  LMsmooth$upper <- LMsmooth$dMRL + qnorm(0.975) * se
   
   par(xaxs = "i", yaxs = "i", mar = c(2, 2.5, 2, 0.5))
-  plot(LMsmooth$LMs, LMsmooth$dRMST, type = "l", lwd = 3,
+  plot(LMsmooth$LMs, LMsmooth$dMRL, type = "l", lwd = 3,
        xlim = c(min(LMs), max(LMs)), ylim = ylimit,
        bty = "l", xaxt = "n", yaxt = "n", xlab = "", ylab = "")
   
